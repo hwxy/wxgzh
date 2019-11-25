@@ -12,49 +12,24 @@
     jsApiList: ['updateAppMessageShareData', 'startRecord', 'stopRecord', 'translateVoice'] // 必填，需要使用的JS接口列表
   });    
 
-  wx.ready(function(){
+  // wx.ready(function(){
   // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-  wx.updateAppMessageShareData({ 
-      title: '呼呼呼', // 分享标题
-      desc: '呼呼呼专卖', // 分享描述
-      link: 'https://31c8fdd1.ngrok.io/view', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-      imgUrl: '../../static/img/20190825172321.jpg',
-      success: function () {
-        // 设置成功
-        console.log(22);
-      },
-      cancel: function() {
-              // 用户取消分享后执行的回调函数
-            }
-    })
-  });
+  // wx.updateAppMessageShareData({ 
+  //     title: '呼呼呼', // 分享标题
+  //     desc: '呼呼呼专卖', // 分享描述
+  //     link: 'https://31c8fdd1.ngrok.io/view', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+  //     imgUrl: '../../static/img/20190825172321.jpg',
+  //     success: function () {
+  //       // 设置成功
+  //       console.log(22);
+  //     },
+  //     cancel: function() {
+  //             // 用户取消分享后执行的回调函数
+  //           }
+  //   })
+  // });
 
   wx.error(function(res){
     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
   });
 </script>
-<!-- <script>
-  $(()=>{
-    
-    $('.start').on('click', () => {
-          wx.startRecord();
-      });
-
-    $('.stop').on('click', () => {
-        wx.stopRecord({   
-        success: function (res) {
-          var localId = res.localId;
-          wx.translateVoice({
-            localId, // 需要识别的音频的本地Id，由录音相关接口获得
-            isShowProgressTips: 1, // 默认为1，显示进度提示
-            success(res){
-              console.log(res, 22);              
-            }
-          });
-        }
-      });
-    })
-
-  })
-  
-</script> -->

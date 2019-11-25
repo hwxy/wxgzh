@@ -12,15 +12,24 @@ export const initSchemas = () => {
 
 export const connect = (db) => {
   let maxConnectTimes = 0;
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve, reject) => {
+
     if(process.env.NODE_ENV != 'production'){
       mongoose.set('debug', true);  
     }
-    mongoose.connect(db, {useNewUrlParser: true ,useUnifiedTopology: true});
+
+    mongoose.connect(db, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
     mongoose.connection.on('disconnect', () => {
       maxConnectTimes++;
       if(maxConnectTimes < 5){  
-        mongoose.connect(db);
+        mongoose.connect(db, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true
+        });
       }else{
         throw new Error('数据库挂了');
       }

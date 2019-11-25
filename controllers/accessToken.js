@@ -3,7 +3,7 @@ import config from  '../config';
 import axios from '../core/network';
 import mongoose from 'mongoose';
   
-     
+         
 export class WxToken{
   constructor(opts) {
     this.opts = opts;
@@ -34,7 +34,6 @@ export class WxToken{
 
   async updateAccessToken(){
     let data = await this.request();
-    console.log(data, 2);
     const now = Date.now();
     const expiresIn = now + (data.expires_in - 20) * 1000;
     data.expires_in = expiresIn;
@@ -60,7 +59,7 @@ export default async (ctx, next) => {
       return res;
     },
     saveAccessToken: async (data) => {
-      await Token.saveAccessToken(data);
+      await Token.saveAccessToken(data);    
       return data;
     }
   });

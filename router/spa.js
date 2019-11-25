@@ -5,7 +5,7 @@ import config from '../config';
 import spaEntry  from '../controllers/spaEntry'
 
 export default (router) => {
-  router.get('/spa', spaEntry, Token,  wxSignature, async (ctx) => {
+  router.get(/\/spa(\/*)?/, spaEntry, Token,  wxSignature, async (ctx) => {
     let { signature, js } = ctx.state;
     
     let wxConfig = {

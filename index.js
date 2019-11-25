@@ -1,30 +1,41 @@
 // 路由
 import router from './router';
+// 中间件
 import viewMiddleware from './middleware/view';
-import { staticProxy } from './middleware/proxy';
+import bodyMiddleware from './middleware/body';
+import csrfMiddleware from './middleware/csrf';
+import sessionMiddleware from './middleware/session';
 
+import { staticProxy } from './middleware/proxy';
+import { historyApiFallback } from "koa2-connect-history-api-fallback";
+// 配置
 import config from  './config';
+// 数据库
 import { connect, initSchemas} from './app/database/init';
 
-import { historyApiFallback } from "koa2-connect-history-api-fallback";
 
-// import Token from './controllers/accessToken';
 (async () => {
   // 连接数据库
   await connect(config.db);
-  initSchemas();
-   
-  // token
-  // let Token = require('./controllers/accessToken').default;
-  // let accessToken = await token();
-      
+  initSchemas(); 
   const Koa = require('koa')
   const app = new Koa()
+
+  app.keys = ['session key', 'csrf example'];
   // view
   // 加载模板引擎
   app.use(viewMiddleware)
+  // 处理请求数据
+  app.use(bodyMiddleware)
+  // session
+  app.use(sessionMiddleware(app));
+  // csrf
+  app.use(csrfMiddleware)
+  // router
+  app.use(router.init());
   // proxy
   app.use(staticProxy);
+  // 单页面处理
   app.use(
     historyApiFallback({
       rewrites: [{
@@ -33,10 +44,6 @@ import { historyApiFallback } from "koa2-connect-history-api-fallback";
       }]
     })
   );
-  app.use(router.init());
-  // history处理
-
-
   app.listen(config.port, ()=>{
     console.log(config.port)
   })

@@ -2,7 +2,7 @@ import wxSignature from '../controllers/wxSignature';
 import Token  from '../controllers/accessToken'
 import config from '../config';
 export default (router) => {
-  router.get('/view', Token,  wxSignature, async (ctx) => {
+  router.get('/view', Token, wxSignature, async (ctx) => {
     let { signature } = ctx.state;
     
     let wxConfig = {

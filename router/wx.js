@@ -15,5 +15,5 @@ export default (router, accessToken) => {
   router.get('/wxUserInfo', async (ctx, next) => {
     let data = await oauth.getUserInfo(ctx, next);
     ctx.body = JSON.stringify(data);
-  });
+  })
 }

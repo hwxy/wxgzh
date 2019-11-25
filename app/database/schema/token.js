@@ -17,7 +17,7 @@ let TokenSchema = new Schema({
     updatedAt: {
       type: Date,
       default: Date.now(),
-    }
+    }     
   }
 });
 

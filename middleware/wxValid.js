@@ -7,7 +7,7 @@ import GetRawBody from 'raw-body';
 import util from '../core/util'
 // import reply from '../controllers/reply';
 
-export default async (ctx, next) => {
+export default async (ctx, next) => {  
   const { accessToken } = ctx.state;
   const { signature, timestamp, nonce, echostr } = ctx.query 
   const token = config.token

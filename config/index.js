@@ -17,7 +17,8 @@ const configs = {
     port: 8080,
     appID: 'wxd04bb4652f8757c4', //公众号里面取
     AppSecret: '7efdfdb2c2c2f274f68dad0732c81cda', //公众号里面取
-    token: 'ab38f22e60ebb0a911d461' //自定义的token
+    token: 'ab38f22e60ebb0a911d461', //自定义的token
+    domain: 'localhost:8080' 
   },
   prod: {
     port: 80,

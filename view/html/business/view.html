@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include ../common/head.html %>
+  <% include ../common/weui-head.html %>
 <body>
   <h1>
     BUTTON
@@ -9,5 +9,42 @@
   <div>123</div>
   <button class="stop weui-btn weui-btn_primary">停止录音</button>
 </body>
+  <% include ../common/weui-bottom.html %>
   <% include ../common/wx.html %>
+  <script>
+    wx.ready(() => {
+      $(()=>{
+        $('.start').on('click', () => {
+              wx.startRecord();
+          });
+        $('.stop').on('click', () => {
+            wx.stopRecord({   
+            success: function (res) {
+              var localId = res.localId;
+              alert(localId)
+              wx.translateVoice({
+                localId, // 需要识别的音频的本地Id，由录音相关接口获得
+                isShowProgressTips: 1, // 默认为1，显示进度提示
+                success(res){
+                  alert(res.translateResult)  
+                  if(res.translateResult){
+                    $.ajax({
+                      url: "https://api.douban.com/v2/movie/search",
+                      type: "get",
+                      data: {
+                        q: res.translateResult
+                      },
+                      success(res){
+                        console.log(res, 22);
+                      }
+                    }) 
+                  }        
+                }
+              });
+            }
+          });
+        })
+      })
+    })
+  </script>
 </html>
