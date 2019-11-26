@@ -3,6 +3,7 @@
 // entity
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import _ from 'lodash';
 
 const Schema = mongoose.Schema;
 
@@ -13,6 +14,7 @@ let userSchema = new Schema({
     type: String
   },
   name: String,
+  phone: String,
   password: String,
   hash_word: String,
   // 兼容各个微信应用，小程序或者公众号的微信用户 Id
@@ -60,21 +62,36 @@ userSchema.pre('save', function(next){
 userSchema.pre('save', function(next){
   // isModified 检查是否修改过
   if(!this.isModified('password')) return next();
-  bcrypt.genSalt(SALT_WORK_FACTOR, (err, result) => {
-    if(err) return next(err);
-    bcrypt.hash(user.password, salt, (err, hash) => {
+  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
+    if(err){
+      return next(err);
+    } 
+    bcrypt.hash(this.password, salt, (err, hash) => {
       if(err) return next(error);
-      user.password = hash;
+      this.hash_word = hash;
       next();
     })
   })
-  next();
 })
 
-userSchema.methods = {
-  register: () => {
-
+userSchema.statics = {
+  async register({ phone, password }){
+    let data = await this.find({ phone });
+    if(!_.isEmpty(data)) {
+      return {
+        message: "已注册",
+        status: 1
+      }
+    }
+    await User.create({ phone, password })
+    return {
+      message: "注册成功",
+      status: 2
+    }
   },
+}
+
+userSchema.methods = {
   comparePassword: function(_password, password){
     return new Promise((resolve, reject) => {
       bcrypt.compare(_password, password, function(err, isMatch) {
