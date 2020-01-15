@@ -11,13 +11,14 @@ class Oauth{
   async getCode(ctx){
     let option = {
       appid: globalConfig.appID,
-      redirect_uri: 'https://60efc049.ngrok.io/wxUserInfo',
+      redirect_uri: 'https://2c2df443.ngrok.io/wxUserInfo',
       response_type: 'code',
       scope: 'snsapi_userinfo',
       state: `${ctx.query.id}#wechat_redirect`
     }
     let url = `${config.getCodeApi}?appid=${option.appid}&redirect_uri=${encodeURI(option.redirect_uri)}&response_type=${option.response_type}&scope=${option.scope}&state=${option.state}`;
     ctx.redirect(url);
+
   }
 
   async getAccessToken(code){

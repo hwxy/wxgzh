@@ -1,13 +1,16 @@
 // 中间件
 import wxValid from '../middleware/wxValid';
 import oauth from '../controllers/oauth';
-import Token  from '../controllers/accessToken'
+import Token from '../controllers/accessToken'
 
-export default (router, accessToken) => {
+export default (router) => {
+  router.get('/', async (ctx) => {
+    ctx.redirect('/spa')
+  });
   // 验证是get
-  router.get('/', Token, wxValid);
+  router.get('/wxOfficialAccounts', Token, wxValid);
   // 微信公众号发过来的是post method       
-  router.post('/', Token, wxValid);
+  router.post('/wxOfficialAccounts', Token, wxValid);
   // 微信第三方
   router.get('/wxUserCode', async (...arg) => {
     oauth.getCode(...arg);

@@ -16,9 +16,9 @@ export class WxToken{
     try{
       let data = await axios.get(this.url);
       return data;
-    }catch(e){
+    }catch(e){   
       return {};
-    }
+    }    
   }
       
   async fetchAccessToken(){
@@ -58,7 +58,7 @@ export default async (ctx, next) => {
       const res = await Token.getAccessToken();
       return res;
     },
-    saveAccessToken: async (data) => {
+    saveAccessToken: async (data) => {       
       await Token.saveAccessToken(data);    
       return data;
     }

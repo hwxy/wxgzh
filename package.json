@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "NODE__ENV=local nodemon ./node_modules/@babel/node/bin/babel-node.js index.js",
     "start:prod": "NODE__ENV=prod nodemon ./node_modules/@babel/node/bin/babel-node.js index.js",
-    "start:try": "NODE__ENV=ceShilocal nodemon ./node_modules/@babel/node/bin/babel-node.js index.js"
+    "start:test": "NODE__ENV=ceShilocal nodemon ./node_modules/@babel/node/bin/babel-node.js index.js"
   },
   "keywords": [],
   "author": "",

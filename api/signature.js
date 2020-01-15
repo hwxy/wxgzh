@@ -43,7 +43,7 @@ class Signature{
   }
 
   async fetchJsapiTicket(){
-    // 获取数据库里面的token
+    // 获取数据库里面的ticket
     let data = await this.getJsapiTicket()
     if(!this.isValidToken(data)){
       data = await this.updateJsapiTicket();

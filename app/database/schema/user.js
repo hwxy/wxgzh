@@ -18,7 +18,7 @@ let userSchema = new Schema({
   password: String,
   hash_word: String,
   // 兼容各个微信应用，小程序或者公众号的微信用户 Id
-  openId: [String],
+  openId: String,
   unionId: String,
   loginAttempts: {
     type: Number,
@@ -75,23 +75,6 @@ userSchema.pre('save', function(next){
 })
 
 userSchema.statics = {
-  async register({ phone, password }){
-    let data = await this.find({ phone });
-    if(!_.isEmpty(data)) {
-      return {
-        message: "已注册",
-        status: 1
-      }
-    }
-    await User.create({ phone, password })
-    return {
-      message: "注册成功",
-      status: 2
-    }
-  },
-}
-
-userSchema.methods = {
   comparePassword: function(_password, password){
     return new Promise((resolve, reject) => {
       bcrypt.compare(_password, password, function(err, isMatch) {
@@ -134,8 +117,43 @@ userSchema.methods = {
         })
       }
     })
-  }
-}      
+  },
+  async register({ phone, password }){
+    let data = await this.find({ phone });
+    if(!_.isEmpty(data)) {
+      return {
+        message: "已注册",   
+        status: 1
+      }
+    }
+    await User.create({ phone, password })
+    return {
+      message: "注册成功",
+      status: 2
+    }
+  },
+  async login({ phone, password }){
+    let data = await this.findOne({ phone });
+    if(!_.isEmpty(data)) {      
+      if(password === data.password){
+        return {
+          message: "登录成功",  
+          status: 2
+        }
+      }else{
+        return {
+          message: "密码错误",
+          status: 1
+        }
+      }
+    }else{
+      return {
+        message: "账号错误",
+        status: 0
+      }
+    }
+  },   
+}
 
 let User = mongoose.model('User', userSchema);
 

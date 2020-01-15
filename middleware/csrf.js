@@ -9,7 +9,7 @@ export class CSRF {
         excludedMethods: ['GET', 'HEAD', 'OPTIONS'],
         disableQuery: false
       },
-      opts
+      opts       
     );
 
     this.tokens = csrf(opts);
@@ -82,8 +82,8 @@ export class CSRF {
 
 
 export const csrfExamples = new CSRF({
-  invalidTokenMessage: 'Invalid CSRF token',
-  invalidTokenStatusCode: 403,
+  invalidTokenMessage: '无权限',
+  invalidTokenStatusCode: 401,
   disableQuery: false
 })
 
@@ -96,6 +96,6 @@ const csrfMiddleware = async (ctx, next) => {
   return csrfExamples.middleware(ctx, next);
 }
 
-export const csrdWhiteList = ['/api/register', '/api/login'];
+export const csrdWhiteList = ['/api/register', '/api/login', '/api/wxUserCode'];
 
 export default csrfMiddleware;
