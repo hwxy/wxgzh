@@ -15,7 +15,7 @@ const configs = {
   },
   prod: {
     port: 4000,
-    db: 'mongodb://10.10.0.167:27017/test',
+    db: 'mongodb://47.101.32.46:27017/test',
     // appID: 'wxc9c4208724f2031b', //公众号里面取
     // AppSecret: 'be6d630aa38ffb92d12a17238ac01676', //公众号里面取
     // token: 'ab38f22e60ebb0a911d461', //自定义的token
