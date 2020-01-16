@@ -1,0 +1,16 @@
+{
+  "main": {
+    "files": {
+      "js": [
+        "/static/js/runtime~main.ea9bfa58.js",
+        "/static/js/9.b16b02c6.chunk.js",
+        "/static/js/main.7a15a825.chunk.js"
+      ],
+      "map": [
+        "/static/js/runtime~main.ea9bfa58.js.map",
+        "/static/js/9.b16b02c6.chunk.js.map",
+        "/static/js/main.7a15a825.chunk.js.map"
+      ]
+    }
+  }
+}

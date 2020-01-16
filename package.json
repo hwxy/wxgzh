@@ -5,14 +5,18 @@
   "main": "wx.js",
   "scripts": {
     "start:dev": "NODE__ENV=local nodemon ./node_modules/@babel/node/bin/babel-node.js index.js",
-    "start:prod": "NODE__ENV=prod nodemon ./node_modules/@babel/node/bin/babel-node.js index.js",
-    "start:test": "NODE__ENV=ceShilocal nodemon ./node_modules/@babel/node/bin/babel-node.js index.js"
+    "start:prod": "NODE__ENV=prod pm2 start ./index.js --no-daemon  --interpreter ./node_modules/@babel/node/bin/babel-node.js ",
+    "publish": "sh publish.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.6.1",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
     "axios": "^0.19.0",
     "babel-preset-env": "^1.7.0",
     "crypto": "^1.0.1",
@@ -26,21 +30,17 @@
     "koa-proxies": "^0.9.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
+    "koa-static": "^5.0.0",
     "koa-views": "^6.2.1",
     "koa2-connect-history-api-fallback": "^0.1.2",
     "lodash": "^4.17.15",
     "mongoose": "^5.7.1",
-    "nodemon": "^1.19.2",
     "qs": "^6.8.0",
     "raw-body": "^2.4.1",
     "sha1": "^1.1.1",
     "xml2js": "^0.4.22"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.6.1",
-    "@babel/preset-env": "^7.5.5",
-    "bcrypt": "^3.0.7"
+    "nodemon": "^2.0.2"
   }
 }

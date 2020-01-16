@@ -2,7 +2,6 @@
 // model
 // entity
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import _ from 'lodash';
 
 const Schema = mongoose.Schema;
@@ -62,26 +61,26 @@ userSchema.pre('save', function(next){
 userSchema.pre('save', function(next){
   // isModified 检查是否修改过
   if(!this.isModified('password')) return next();
-  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-    if(err){
-      return next(err);
-    } 
-    bcrypt.hash(this.password, salt, (err, hash) => {
-      if(err) return next(error);
-      this.hash_word = hash;
-      next();
-    })
-  })
+  // bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
+  //   if(err){
+  //     return next(err);
+  //   } 
+  //   bcrypt.hash(this.password, salt, (err, hash) => {
+  //     if(err) return next(error);
+  //     this.hash_word = hash;
+  //     next();
+  //   })
+  // })
 })
 
 userSchema.statics = {
   comparePassword: function(_password, password){
-    return new Promise((resolve, reject) => {
-      bcrypt.compare(_password, password, function(err, isMatch) {
-        if(!err) resolve(isMatch);
-        else reject(err);
-      })
-    })
+    // return new Promise((resolve, reject) => {
+    //   bcrypt.compare(_password, password, function(err, isMatch) {
+    //     if(!err) resolve(isMatch);
+    //     else reject(err);
+    //   })
+    // })
   },
   incLoginAttempts(user){
     const that = this;

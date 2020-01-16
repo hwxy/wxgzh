@@ -1,5 +1,10 @@
-import entrypoints from '../mobile/config/webpack-entrypoints.json';
-import get from 'lodash/get';
+import get from 'lodash/get';    
+
+import env from '../env'
+
+let path = env == 'prod' ?  '../asset/webpack-entrypoints.json'  : '../react/config/webpack-entrypoints.json'
+
+const entrypoints = require(path)
 
 export const getJsBundlesByEntry = (entry) => {
     const jsFiles = get(entrypoints,`${entry}.files.js`)
