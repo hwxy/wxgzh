@@ -9,7 +9,7 @@ else
   echo "项目已经存在"  
 fi
 
-cd ./react
+# cd ./react
 
 git pull https://github.com/hwxy/react.git master
 
