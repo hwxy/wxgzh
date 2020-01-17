@@ -2,16 +2,16 @@ CurrentPath="`pwd`" #绝对路径
 
 ENV=$1 #环境
  
-if [ ! -d "./react" ]; then
-  git clone https://github.com/hwxy/react.git
-  echo  "clone react product"
-else
-  echo "项目已经存在"  
-fi
+# if [ ! -d "./react" ]; then
+#   git clone https://github.com/hwxy/react.git
+#   echo  "clone react product"
+# else
+#   echo "项目已经存在"  
+# fi
 
 # cd ./react
 
-git pull https://github.com/hwxy/react.git master
+# git pull https://github.com/hwxy/react.git master
 
 npm i 
 
