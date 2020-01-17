@@ -27,18 +27,19 @@ Now=`date +%Y%m%d%H%M%S` #当前时间
 
 Tag="$1$Now" #tag号
 
-previewLog=`tail -n -1 ${CurrentPath}/prod.log`
+# previewLog=`tail -n -1 ${CurrentPath}/prod.log`
+
+docker build -t "47.101.32.46:5000/product:$Tag" .
+
+docker stop h5
+
+docker rm -f h5
+
+docker run --name=h5 -p 4000:4000 -d "47.101.32.46:5000/product:${Tag}"
 
 echo "$Tag" >> "${CurrentPath}/prod.log"
 
 echo $Tag
-
-docker build -t "47.101.32.46:5000/product:$Tag" .
-
-docker stop ${previewLog}
-
-docker run --name=${Tag} -p 4000:4000 -d "47.101.32.46:5000/product:${Tag}"
-
 # docker push "47.101.32.46:5000/mall:$Tag"
 
 
