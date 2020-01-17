@@ -11,7 +11,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 
 # Install app dependencies
 COPY package.json package-lock.json ./
-RUN npm install --production
+RUN npm i
 RUN npm install pm2 -g 	
 # Copy Files
 COPY api/ ./api
