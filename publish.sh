@@ -31,9 +31,11 @@ previewLog=`tail -n -1 ${CurrentPath}/prod.log`
 
 echo "$Tag" >> "${CurrentPath}/prod.log"
 
-echo $previewLog
+echo $Tag
 
 docker build -t "47.101.32.46:5000/product:$Tag" .
+
+docker stop ${previewLog}
 
 docker run --name=${Tag} -p 4000:4000 -d "47.101.32.46:5000/product:${Tag}"
 
