@@ -2,14 +2,14 @@
   "main": {
     "files": {
       "js": [
-        "/static/js/runtime~main.ea9bfa58.js",
-        "/static/js/9.b16b02c6.chunk.js",
-        "/static/js/main.7a15a825.chunk.js"
+        "//hwcdn.hwaxy.cn/static/js/runtime~main.2a31942b.js",
+        "//hwcdn.hwaxy.cn/static/js/9.b16b02c6.chunk.js",
+        "//hwcdn.hwaxy.cn/static/js/main.7a15a825.chunk.js"
       ],
       "map": [
-        "/static/js/runtime~main.ea9bfa58.js.map",
-        "/static/js/9.b16b02c6.chunk.js.map",
-        "/static/js/main.7a15a825.chunk.js.map"
+        "//hwcdn.hwaxy.cn/static/js/runtime~main.2a31942b.js.map",
+        "//hwcdn.hwaxy.cn/static/js/9.b16b02c6.chunk.js.map",
+        "//hwcdn.hwaxy.cn/static/js/main.7a15a825.chunk.js.map"
       ]
     }
   }

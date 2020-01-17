@@ -7,7 +7,8 @@
     "start:dev": "NODE__ENV=local nodemon ./node_modules/@babel/node/bin/babel-node.js index.js",
     "start:prod": "NODE__ENV=prod node ./node_modules/@babel/node/bin/babel-node.js index.js ",
     "build:prod": "NODE__ENV=prod pm2 start ./index.js --no-daemon  --interpreter ./node_modules/@babel/node/bin/babel-node.js ",
-    "publish": "sh publish.sh"
+    "publish": "sh publish.sh",
+    "copy": "sh copy.sh"
   },
   "keywords": [],
   "author": "",
