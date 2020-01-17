@@ -15,13 +15,13 @@ git pull https://github.com/hwxy/react.git master
 
 npm i 
 
-npm run build
+# npm run build
 
-cp -rf ./build/webpack-entrypoints.json ../asset
+# cp -rf ./build/webpack-entrypoints.json ../asset
 
-cp -rf ./build/static ../asset
+# cp -rf ./build/static ../asset
 
-cd ../
+# cd ../
 
 Now=`date +%Y%m%d%H%M%S` #当前时间
 
