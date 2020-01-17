@@ -34,4 +34,4 @@ EXPOSE 4000
 VOLUME ["/root/app/logs"]
 
 # 运行命令
-CMD ["npm","run","start:prod"]
+CMD ["npm","run","build:prod"]
