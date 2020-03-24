@@ -9,7 +9,7 @@ export default (router) => {
     
     let wxConfig = {     
       appId: config.appID,
-      ...signature           
+      ...signature                
     }
     
     await ctx.render('business/spa', {

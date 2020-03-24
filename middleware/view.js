@@ -6,5 +6,5 @@ const viewMiddleware = view(path.join(__dirname, '../view/html'), {
       html: 'ejs'  //可以把ejs文件改成html
   }
 })   
-
+      
 export default viewMiddleware;

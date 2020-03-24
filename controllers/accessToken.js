@@ -4,7 +4,7 @@ import axios from '../core/network';
 import mongoose from 'mongoose';
   
          
-export class WxToken{
+export class WxToken{ 
   constructor(opts) {
     this.opts = opts;
     this.url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${opts.appID}&secret=${opts.appSecret}`;
@@ -51,7 +51,7 @@ export class WxToken{
 
 export default async (ctx, next) => {
   const Token = mongoose.model('Token');
-  let wxToken = new WxToken({  
+  let wxToken = new WxToken({       
     appID: config.appID,     
     appSecret: config.AppSecret,
     getAccessToken: async () => {

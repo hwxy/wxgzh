@@ -8,9 +8,6 @@ const entrypoints = require(path)
 
 export const getJsBundlesByEntry = (entry) => {
     const jsFiles = get(entrypoints,`${entry}.files.js`)
-
-    // if(env == 'prod'){}
-
     return jsFiles || []
 }
 

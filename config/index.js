@@ -6,7 +6,7 @@ export const mpBase = 'https://mp.weixin.qq.com';
 // config
 const configs = {
   local: {
-    db: 'mongodb://10.10.0.167:27017/test',
+    db: 'mongodb://localhost:27017/test',
     port: 4000,
     appID: 'wxd04bb4652f8757c4', //公众号里面取
     AppSecret: '7efdfdb2c2c2f274f68dad0732c81cda', //公众号里面取

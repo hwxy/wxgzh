@@ -18,7 +18,7 @@ class Oauth{
     }
     let url = `${config.getCodeApi}?appid=${option.appid}&redirect_uri=${encodeURI(option.redirect_uri)}&response_type=${option.response_type}&scope=${option.scope}&state=${option.state}`;
     ctx.redirect(url);
-
+      
   }
 
   async getAccessToken(code){
@@ -30,7 +30,7 @@ class Oauth{
     let url = `${config.getAccessTokenApi}?appid=${option.appid}&secret=${option.secret}&code=${option.code}&grant_type=authorization_code`;
     
     let data = await axios.get(url)
-
+      
     return data;
   }
 
@@ -42,7 +42,7 @@ class Oauth{
     let url = `${config.getUserInfoApi}?access_token=${access_token}&openid=${openid}&lang=zh_CN`;
     let data = await axios.get(url)
     return data;
-  }
+  }    
 }
 
 export default ((option) => {

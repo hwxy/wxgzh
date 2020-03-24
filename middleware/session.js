@@ -1,6 +1,6 @@
 import Session from 'koa-session';
 
-export default (app) => {
+export default (app) => { 
   let config = {
     key: 'token', 
     maxAge: 7* 864e+5,

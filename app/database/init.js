@@ -8,7 +8,7 @@ export const initSchemas = () => {
   glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach((res)=>{
     require(res);
   });
-}
+}    
 
 export const connect = (db) => {
   let maxConnectTimes = 0;

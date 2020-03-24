@@ -7,7 +7,7 @@ export default (router) => {
   router.get('/', async (ctx) => {
     ctx.redirect('/spa')
   });
-  // 验证是get
+  // 验证是get     
   router.get('/wxOfficialAccounts', Token, wxValid);
   // 微信公众号发过来的是post method       
   router.post('/wxOfficialAccounts', Token, wxValid);
@@ -18,5 +18,5 @@ export default (router) => {
   router.get('/wxUserInfo', async (ctx, next) => {
     let data = await oauth.getUserInfo(ctx, next);
     ctx.body = JSON.stringify(data);
-  })
+  })        
 }
